@@ -15,7 +15,7 @@ function computerPlay()
     }
 }
 
-function playerChoice(playerselection,computerselection)
+function round(playerselection,computerselection)
 {
     let choice = playerselection.toLowerCase();
     switch(true)
@@ -44,5 +44,35 @@ function playerChoice(playerselection,computerselection)
     }
 }
 
+function game()
+{
+    let player_score = 0;
+    let comp_score = 0;
+    while (Math.max(player_score,comp_score) < 5)
+    {
+        let playerThrow = prompt("Rock, Paper or Scissors?");
+        let result = round(playerThrow,computerPlay());
+        console.log(result);
+        term_result = result.toLowerCase()
+        if (term_result.includes("win"))
+        {
+            player_score += 1;
+        }
+        if (term_result.includes("lose"))
+        {
+            comp_score += 1;
+        }
+    }
 
-console.log(playerChoice('PaPER',computerPlay()))
+    if (player_score == 5) 
+    { 
+        console.log("Winner, Winner, Chicken Dinner!")
+    }
+
+    if (comp_score == 5) 
+    { 
+        console.log("Loser, Loser, Chicken Bruiser!")
+    }
+}
+
+game()
