@@ -66,13 +66,21 @@ function game()
 
     if (player_score == 5) 
     { 
-        console.log("Winner, Winner, Chicken Dinner!")
+        alert("Winner, Winner, Chicken Dinner!")
     }
 
     if (comp_score == 5) 
     { 
-        console.log("Loser, Loser, Chicken Bruiser!")
+        alert("Loser, Loser, Chicken Bruiser!")
     }
 }
 
-game()
+const button_rock =  document.querySelector('#Rock');
+const button_paper = document.querySelector('#Paper');
+const button_scissors = document.querySelector('#Scissors');
+
+
+
+button_rock.addEventListener('click', function(){
+    alert(round('rock',computerPlay()))
+})
