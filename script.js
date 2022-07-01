@@ -15,6 +15,11 @@ function computerPlay()
     }
 }
 
+const button_rock =  document.querySelector('#Rock');
+const button_paper = document.querySelector('#Paper');
+const button_scissors = document.querySelector('#Scissors');
+const body_main = document.querySelector('body');
+
 function round(playerselection,computerselection)
 {
     let choice = playerselection.toLowerCase();
@@ -48,39 +53,98 @@ function game()
 {
     let player_score = 0;
     let comp_score = 0;
-    while (Math.max(player_score,comp_score) < 5)
-    {
-        let playerThrow = prompt("Rock, Paper or Scissors?");
-        let result = round(playerThrow,computerPlay());
-        console.log(result);
-        term_result = result.toLowerCase()
-        if (term_result.includes("win"))
-        {
-            player_score += 1;
-        }
-        if (term_result.includes("lose"))
-        {
-            comp_score += 1;
-        }
-    }
 
-    if (player_score == 5) 
-    { 
-        alert("Winner, Winner, Chicken Dinner!")
-    }
+        button_rock.addEventListener('click', function(){
+            const div_temp = document.createElement('div');
+            message = round('rock',computerPlay())
 
-    if (comp_score == 5) 
-    { 
-        alert("Loser, Loser, Chicken Bruiser!")
-    }
+            if (message.includes("Lose"))
+            {
+               comp_score += 1
+            }
+            if (message.includes("Win"))
+            {
+               player_score += 1
+            }
+
+            if (player_score == 5) 
+            { 
+            alert("Winner, Winner, Chicken Dinner!")
+            }
+
+            if (comp_score == 5) 
+            { 
+            alert("Loser, Loser, Chicken Bruiser!")
+            }
+
+
+            div_temp.textContent = `${message} Player Score ${player_score}`;
+            div_temp.style.color = 'blue';  
+            body_main.appendChild(div_temp)
+            
+        })
+
+        button_paper.addEventListener('click', function(){
+            const div_temp = document.createElement('div');
+            message = round('paper',computerPlay())
+
+            if (message.includes("Lose"))
+            {
+               comp_score += 1
+            }
+            if (message.includes("Win"))
+            {
+               player_score += 1
+            }
+
+            if (player_score == 5) 
+            { 
+            alert("Winner, Winner, Chicken Dinner!")
+            }
+
+            if (comp_score == 5) 
+            { 
+            alert("Loser, Loser, Chicken Bruiser!")
+            }
+
+            div_temp.textContent = `${message} Player Score ${player_score}`;
+            div_temp.style.color = 'blue';  
+            body_main.appendChild(div_temp)
+        })
+
+        button_scissors.addEventListener('click', function(){
+            const div_temp = document.createElement('div');
+            message = round('scissors',computerPlay())
+
+            if (message.includes("Lose"))
+            {
+               comp_score += 1
+            }
+            if (message.includes("Win"))
+            {
+               player_score += 1
+            }
+
+            if (player_score == 5) 
+            { 
+            alert("Winner, Winner, Chicken Dinner!")
+            }
+
+            if (comp_score == 5) 
+            { 
+            alert("Loser, Loser, Chicken Bruiser!")
+            }
+
+            div_temp.textContent = `${message} Player Score ${player_score}`;
+            div_temp.style.color = 'blue';  
+            body_main.appendChild(div_temp)
+        })
+            
+
+
+
+
+    
 }
 
-const button_rock =  document.querySelector('#Rock');
-const button_paper = document.querySelector('#Paper');
-const button_scissors = document.querySelector('#Scissors');
-
-
-
-button_rock.addEventListener('click', function(){
-    alert(round('rock',computerPlay()))
-})
+game()
